@@ -1,0 +1,64 @@
+{
+  "configurations": [
+    {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "pwa-chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
+  {
+    "name": "Attach to Chrome",
+    "port": 3000,
+    "request": "attach",
+    "type": "pwa-chrome",
+    "webRoot": "${workspaceFolder}"
+  },
+    {
+      "type": "pwa-chrome",
+      "name": "ws://127.0.0.1:9229/d7018fe6-8cc8-4c12-aeb3-b7369c22fd18",
+      "request": "launch",
+      "url": "ws://127.0.0.1:9229/d7018fe6-8cc8-4c12-aeb3-b7369c22fd18"
+    },
+    {
+      "name": "Attach",
+      "port": 3001,
+      "request": "attach",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
+    },
+    {
+      "name": "Attach by Process ID",
+      "processId": "${command:PickProcess}",
+      "request": "attach",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
+    },
+    {
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "name": "nodemon",
+      "program": "${workspaceFolder}/api/v1/src/index.js",
+      "request": "launch",
+      "restart": true,
+      "runtimeExecutable": "nodemon",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/api/v1/src/index.js"
+    }
+  ]
+}
