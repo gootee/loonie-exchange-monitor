@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+     "module": "commonjs",
+     "moduleResolution": "node",
+     "pretty": true,
+     "target": "es6",
+     "outDir": "distribution",
+     "baseUrl": "./lib",
+     "sourceMap": true,
+     "esModuleInterop": true,
+  },
+  "include": [
+     "lib/**/*.ts",
+     "lib/config/sum.test.js"  
+  ],
+  "exclude": [
+    "node_modules", 
+    "distribution", 
+    "dist",
+    "__tests__", 
+    "**/*.spec.js"
+  ]
+}

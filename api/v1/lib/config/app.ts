@@ -1,20 +1,20 @@
 import express from "express"
 import cors from 'cors'
-import { CommonRoutes } from "../routes/common_routes"
-import { LoonieMonRoutes } from "../routes/loonieMon_routes"
+import { CommonRoutes } from "../routes/common_routes.js"
+import MainRoutes = require("../routes/mainRoutes.js")
 
 class App {
   public app: express.Application
-  private common_routes: CommonRoutes = new CommonRoutes()
-  private loonieMon_routes: LoonieMonRoutes = new LoonieMonRoutes()
+  private commonRoutes: CommonRoutes = new CommonRoutes()
+  private mainRoutes: MainRoutes = new MainRoutes()
 
   constructor() {
     this.app = express()
     this.config()
-    this.loonieMon_routes.route(this.app)
+    this.mainRoutes.route(this.app)
 
     //always last
-    this.common_routes.route(this.app)
+    this.commonRoutes.route(this.app)
   }
 
   private config(): void {
@@ -23,4 +23,5 @@ class App {
     this.app.use(cors())
   }
 }
-export default new App().app
+
+export = App

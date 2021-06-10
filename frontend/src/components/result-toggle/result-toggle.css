@@ -1,0 +1,72 @@
+.white_font {
+  font-size: 3.1em;
+  font-family: 'Staatliches', cursive;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  -webkit-text-fill-color: white;
+}
+
+.red_font {
+  font-size: 3.1em;
+  font-family: 'Staatliches', cursive;
+  -webkit-text-fill-color: #f30808;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.toggle {
+  --width: 210px;
+  --height: calc(var(--width) / 2);
+  --border-radius: calc(var(--height) / 2);
+  display: inline-block;
+  cursor: arrow;
+}
+
+.toggle .toggle_input {
+  display: none;
+}
+
+.toggle .toggle_fill {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  background: #dddddd;
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+}
+
+.toggle .toggle_input:checked ~ .toggle_fill {
+  background: #f30808;
+}
+
+.toggle .toggle_fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--height);
+  width: var(--height);
+  background: #ffffff;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--border-radius);
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+.toggle .toggle_input:checked ~ .toggle_fill::after {
+  -webkit-transform: translateX(var(--height));
+          transform: translateX(var(--height));
+}
+
+.toggle .toggle_container {
+  min-width: var(--height);
+}
+
+.toggle .toggle_container .toggle_label {
+  text-align: center;
+}
+/*# sourceMappingURL=result-toggle.css.map */

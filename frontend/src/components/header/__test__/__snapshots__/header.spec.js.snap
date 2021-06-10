@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<header
+  className="row header"
+  data-testid="header"
+>
+  <div
+    className="text-center d-flex justify-content-center align-items-center"
+  >
+    <div
+      className="h1Font"
+    >
+      Loonie Exchange Monitor
+    </div>
+  </div>
+</header>
+`;

@@ -1,0 +1,67 @@
+$canadaRed: rgb(243, 8, 8);
+
+.white_font {
+  font-size: 3.1em;
+  font-family: 'Staatliches', cursive;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  -webkit-text-fill-color: white;
+}
+
+.red_font {
+  font-size: 3.1em;
+  font-family: 'Staatliches', cursive;
+  -webkit-text-fill-color: $canadaRed;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.toggle {
+  --width: 210px;
+  --height: calc(var(--width) / 2);
+  --border-radius: calc(var(--height) / 2);
+  display: inline-block;
+  cursor: arrow;
+
+  .toggle_input {
+    display: none;
+  }  
+
+  .toggle_fill {
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background: #dddddd;
+    transition: background 0.2s;
+  }
+  
+  .toggle_input:checked ~ .toggle_fill {
+    background: $canadaRed;
+  }
+  
+  .toggle_fill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--height);
+    width: var(--height);
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: var(--border-radius);
+    transition: transform 0.2s;
+  }
+  
+  .toggle_input:checked ~ .toggle_fill::after {
+    transform: translateX(var(--height));
+  }
+  
+  .toggle_container {
+    min-width: var(--height);
+
+    .toggle_label {
+      text-align: center;
+    }
+  }
+}

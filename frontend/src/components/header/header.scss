@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches|Thasadith');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;1,700&display=swap');
+
+$canadaRed: rgb(243, 8, 8);
+
+.header {
+  background-color: $canadaRed;
+  min-height: 10%;
+  color: white;
+
+  .h1Font {
+    margin-top: 0;
+    font-size: 2.052em;
+    font-family: 'Philosopher';
+    color: black;
+    font-weight: bold;
+    -webkit-text-fill-color: white; 
+  }
+}

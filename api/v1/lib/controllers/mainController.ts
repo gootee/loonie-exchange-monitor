@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response } from 'express'
 import axios, { AxiosResponse } from 'axios'
 
 interface ISampleData {
@@ -9,7 +9,13 @@ interface ISampleData {
   medianData: number[]
 }
 
-export class LoonieMonController {
+interface IRates {
+  [key: string]: {
+    "USD": number
+  }  
+}
+
+class MainController {
   private getFormattedDate(date: Date): string {
     const dd: String  = String(date.getDate()).padStart(2, '0')
     const mm: String = String(date.getMonth() + 1).padStart(2, '0')
@@ -18,9 +24,15 @@ export class LoonieMonController {
   }
 
   private getDisclaimer(from: string, to: string): string {
-    if (from.length === 0 || to.length === 0) {
+    if (
+        from.length === 0 || 
+        to.length === 0 ||
+        !Date.parse(from) ||
+        !Date.parse(to)
+       ){
+         
       return "Based on recent median exchange rates"
-    }
+    } 
 
     const fromDate: Date = new Date(from + "T00:00:00.000-07:00")
     const toDate: Date = new Date(to + "T00:00:00.000-07:00")
@@ -41,7 +53,7 @@ export class LoonieMonController {
     return disclaimer
   }
 
-  private getSampleData(rates: Object): ISampleData {
+  private getSampleData(rates: IRates): ISampleData {
     const todayDate: Date = new Date()
     const today: string =  this.getFormattedDate(todayDate)
     let sampleData: ISampleData = {
@@ -128,13 +140,18 @@ export class LoonieMonController {
 
               return res.send({
                 status: 'OK',
-                medianRate: medianRate,
-                todayRate: sampleData.todayRate,
-                fromDate: sampleData.fromDate,
-                toDate: sampleData.toDate,
-                disclaimer: disclaimer,
-                buySellRecommendation: sampleData.todayRate > medianRate ? "Sell" : "Buy",
-                buyRecommendedToday: sampleData.todayRate < medianRate
+                title: "Loonie Exchange Monitor",
+                superText: "Today is a good day to",
+                subText: '$CAD @ ' 
+                  + sampleData.todayRate.toString() 
+                  + ' $USD' 
+                  + (disclaimer.length > 0 ? '*' : ''),
+                footnote: disclaimer,
+                toggle: {
+                  aLabel: "Buy",
+                  bLabel: "Sell",
+                  aIsResult: sampleData.todayRate < medianRate
+                },
               })
             }
           }
@@ -145,3 +162,5 @@ export class LoonieMonController {
     fetchData(res)
   }
 }
+
+export = MainController
