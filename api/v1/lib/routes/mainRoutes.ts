@@ -1,5 +1,5 @@
 import { Application, Request, Response } from 'express';
-import MainController = require('../controllers/mainController')
+import MainController = require('../controllers/main_controller/mainController')
 
 class MainRoutes {
   public localmainController = new MainController()

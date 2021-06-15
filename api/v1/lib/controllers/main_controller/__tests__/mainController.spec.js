@@ -1,4 +1,4 @@
-const MainController = require('../dist/lib/controllers/mainController');
+const MainController = require('../../../../dist/lib/controllers/mainController');
 
 describe("Data gathering and formatting", () => {
   test("it should format a date ", () => {
